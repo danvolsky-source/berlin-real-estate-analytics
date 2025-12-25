@@ -125,3 +125,11 @@
 - [x] Update Home.tsx to use custom icon images
 - [x] Verify icons display correctly on homepage
 - [ ] Update MapView.tsx legend to use custom icons (if needed)
+
+## New Features to Implement
+- [x] Interactive trend chart modal - Click sparkline to show detailed historical graph
+- [x] District infrastructure filters - Filter districts by mosque/church/synagogue count
+- [x] District comparison feature - Select 2-3 districts for side-by-side comparison
+- [x] Test all new features - All 10 tests passing
+- [ ] Create checkpoint
+- [ ] Publish to GitHub

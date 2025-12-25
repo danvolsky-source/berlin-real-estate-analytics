@@ -8,6 +8,8 @@ import { toast } from "sonner";
 import { Link } from "wouter";
 import { useCity } from "@/contexts/CityContext";
 import CitySelector from "@/components/CitySelector";
+import { TrendChartModal } from "@/components/TrendChartModal";
+import { useState } from "react";
 
 interface CommunityData {
   name: string;
@@ -15,7 +17,7 @@ interface CommunityData {
   progression: Array<{ year: number; population: number }>;
 }
 
-function SparklineGraph({ data }: { data: Array<{ year: number; population: number }> }) {
+function SparklineGraph({ data, onClick }: { data: Array<{ year: number; population: number }>; onClick?: () => void }) {
   if (data.length === 0) return null;
   
   const values = data.map(d => d.population);
@@ -45,7 +47,14 @@ function SparklineGraph({ data }: { data: Array<{ year: number; population: numb
     : "rgb(156 163 175)"; // gray
   
   return (
-    <svg viewBox="0 0 100 100" className="w-24 h-8" preserveAspectRatio="none">
+    <svg 
+      viewBox="0 0 100 100" 
+      className="w-24 h-8 cursor-pointer hover:opacity-80 transition-opacity" 
+      preserveAspectRatio="none"
+      onClick={onClick}
+      role="button"
+      aria-label="Click to view detailed chart"
+    >
       <path
         d={pathData}
         fill="none"
@@ -87,6 +96,7 @@ function ProgressionIndicator({ data }: { data: Array<{ year: number; population
 export default function Home() {
   const { selectedCity } = useCity();
   const currentYear = 2024;
+  const [selectedCommunity, setSelectedCommunity] = useState<{ name: string; data: Array<{ year: number; population: number }> } | null>(null);
   
   const { data: summaryData, isLoading: summaryLoading } = trpc.demographics.citySummary.useQuery({
     city: selectedCity,
@@ -304,7 +314,10 @@ export default function Home() {
                         <div className="font-medium">{community.name}</div>
                         <div className="text-2xl font-bold">{community.latestPercentage.toFixed(1)}%</div>
                         <div>
-                          <SparklineGraph data={community.progression} />
+                          <SparklineGraph 
+                            data={community.progression} 
+                            onClick={() => setSelectedCommunity({ name: community.name, data: community.progression })}
+                          />
                         </div>
                         <div>
                           <ProgressionIndicator data={community.progression} />
@@ -317,6 +330,15 @@ export default function Home() {
             </Card>
           </div>
         </section>
+        
+        {/* Trend Chart Modal */}
+        <TrendChartModal
+          open={!!selectedCommunity}
+          onOpenChange={(open) => !open && setSelectedCommunity(null)}
+          communityName={selectedCommunity?.name || ''}
+          data={selectedCommunity?.data || []}
+          cityName={selectedCity}
+        />
         
         {/* Districts Overview */}
         <section>
