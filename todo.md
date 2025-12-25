@@ -116,3 +116,12 @@
 - [x] Verify all tests pass before final commit (10/10 tests passing)
 - [x] Create LICENSE file (MIT License)
 - [x] Add architecture documentation
+
+## Custom Religious Building Icons
+- [x] Generate minaret with crescent moon icon for mosques (blue theme)
+- [x] Generate church with cross icon for churches (green theme)
+- [x] Generate synagogue with Magen David icon for synagogues (purple theme)
+- [x] Save icons to client/public/ directory with transparent backgrounds
+- [x] Update Home.tsx to use custom icon images
+- [x] Verify icons display correctly on homepage
+- [ ] Update MapView.tsx legend to use custom icons (if needed)

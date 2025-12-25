@@ -211,7 +211,7 @@ export default function Home() {
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
                             <div className="p-2 rounded-lg bg-chart-1/20">
-                              <Building2 className="w-6 h-6 text-chart-1" />
+                              <img src="/mosque-icon.png" alt="Mosque" className="w-8 h-8" />
                             </div>
                             <div>
                               <p className="text-3xl font-bold">{summaryData?.current?.mosquesCount || 0}</p>
@@ -234,7 +234,7 @@ export default function Home() {
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
                             <div className="p-2 rounded-lg bg-chart-2/20">
-                              <Church className="w-6 h-6 text-chart-2" />
+                              <img src="/church-icon.png" alt="Church" className="w-8 h-8" />
                             </div>
                             <div>
                               <p className="text-3xl font-bold">{summaryData?.current?.churchesCount || 0}</p>
@@ -257,7 +257,7 @@ export default function Home() {
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
                             <div className="p-2 rounded-lg bg-chart-3/20">
-                              <span className="text-2xl" role="img" aria-label="Star of David">✡️</span>
+                              <img src="/synagogue-icon.png" alt="Synagogue" className="w-8 h-8" />
                             </div>
                             <div>
                               <p className="text-3xl font-bold">{summaryData?.current?.synagoguesCount || 0}</p>
