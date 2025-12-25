@@ -1,5 +1,9 @@
 # Berlin Real Estate Analytics
 
+[![CI](https://github.com/danvolsky-source/berlin-real-estate-analytics/workflows/CI/badge.svg)](https://github.com/danvolsky-source/berlin-real-estate-analytics/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D22.0.0-brightgreen)](https://nodejs.org/)
+
 A comprehensive demographic analysis and property market visualization platform for major German cities, featuring interactive maps, community composition tracking, and religious infrastructure monitoring.
 
 ![Platform Screenshot](https://via.placeholder.com/1200x600/1a1a1a/3b82f6?text=Berlin+Real+Estate+Analytics)
@@ -89,7 +93,10 @@ JWT_SECRET=your-jwt-secret-key
 VITE_APP_ID=your-app-id
 OAUTH_SERVER_URL=https://api.manus.im
 VITE_OAUTH_PORTAL_URL=https://oauth.manus.im
+VITE_MAPBOX_ACCESS_TOKEN=your-mapbox-token
 ```
+
+> **For GitHub Actions CI/CD**: See [GitHub Secrets Configuration Guide](docs/GITHUB_SECRETS.md) for setting up environment variables in GitHub Actions.
 
 4. **Initialize the database**
 
